@@ -27,4 +27,4 @@ State1:
 8 -     Confirm selected note  
 14 -    Octave lower indicator  
 15 -    Octave Higher indicator  
-16-31   Select Pitch  
+16-31 -   Select Pitch  
