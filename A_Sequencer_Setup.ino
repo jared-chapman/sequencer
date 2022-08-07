@@ -1,7 +1,11 @@
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL343.h>
 #include <Adafruit_NeoTrellisM4.h>
 
 // Trellis Setup
 Adafruit_NeoTrellisM4 trellis = Adafruit_NeoTrellisM4();
+Adafruit_ADXL343 accel = Adafruit_ADXL343(12345, &Wire1);
 
 // MIDI setup
 #define MIDI_CHANNEL 0
@@ -66,6 +70,7 @@ int ou = orange;  // Octave Up
 int od = orange;  // Octave Down
 int oh = off;     // Octave Indicator High
 int ol = off;     // Octave Indicator Low
+int cc = teal;    // Control Change Active
 
 // Keyboard colors
 int bk = red;     // Black Key
@@ -74,7 +79,7 @@ int bg = off;     // Background
 
 
 // The showLights function will always check this array and set lights accordingly  
-int lights[]        = {pp, pp, of, of, od, ou, sd, su,
+int lights[]        = {pp, pp, cc, of, od, ou, sd, su,
                        cn, of, of, of, of, of, oh, ol,
                        of, of, of, of, of, of, of, of,    // These two lines will be overridden in sequencerLightControl()
                        of, of, of, of, of, of, of, of};   // This is here to initialize the array
@@ -89,6 +94,12 @@ int sequenceNotesOnOff[] = {0, 0, 0, 0, 0, 0, 0, 0,
 // -1 will be off
 int sequenceNotes[] = {-1, -1, -1, -1, -1, -1, -1, -1,
                        -1, -1, -1, -1, -1, -1, -1, -1};
+                       
+// Control Codes for accelerometer
+int xCCx = 16; // wtf is x?
+int xCCy = 17; // y is star power
+int xCCz = 18; // z is Jimi playing with his teeth
+bool ccActive = true;
 
 
                  
@@ -100,4 +111,12 @@ void setup() {
 
     trellis.enableUSBMIDI(true);
     trellis.setUSBMIDIchannel(MIDI_CHANNEL);
+
+    /* Initialise the sensor */
+  if(!accel.begin())
+  {
+    /* There was a problem detecting the ADXL343 ... check your connections */
+    Serial.println("Ooops, no ADXL343 detected ... Check your wiring!");
+    while(1);
+  }
 }
