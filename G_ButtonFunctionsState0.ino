@@ -1,5 +1,4 @@
-// Between these lines are the functions to run when a button is pressed in state 0
-//---------------------------------------------------------------------------------
+//Functions to run when a button is pressed in state 0
 
 void state0_0(){
   // Play/Pause
@@ -16,6 +15,7 @@ void state0_1(){
 
 void state0_2(){
   Serial.println("State 0 Button 2");
+  flipCcActive();
 }
 
 void state0_3(){
@@ -158,5 +158,3 @@ void state0_31(){
   Serial.println("State 0 Button 31");
   notePicker(15);
 }
-
-//---------------------------------------------------------------------------------

@@ -9,6 +9,7 @@ A MIDI sequencer designed for the Adafruit Neotrellis M4 board, but also meant t
 State 0:  
 0 -     Play/Pause  
 1 -     Restart  
+2 -     Enable/disable Midi CC changes via accelerometer
 4 -     Transpose down 1 half step  
 5 -     Transpose up 1 half step  
 6 -     Slow down    
@@ -20,6 +21,7 @@ State 0:
 State1:  
 0 -     Play/Pause  
 1 -     Restart  
+2 -     Enable/disable Midi CC changes via accelerometer
 4 -     Transpose down 1 half step  
 5 -     Slow down  
 6 -     Speed up  

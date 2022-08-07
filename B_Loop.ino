@@ -3,4 +3,7 @@ void loop() {
   buttonHandler();
   sequencerClock();
   sequencerLightControl(); // too heavy?
+  if (ccActive){
+    controlChange();
+  }
 }

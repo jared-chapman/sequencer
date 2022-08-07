@@ -12,6 +12,7 @@ void state1_1(){
 
 void state1_2(){
   Serial.println("State 1 Button 2");
+  flipCcActive();
 }
 
 void state1_3(){
